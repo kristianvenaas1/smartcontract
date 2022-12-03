@@ -51,7 +51,7 @@ contract Ballot {
 
         require(voters[voter].weight == 0);
 
-        voters[voter].weight == 1;
+        voters[voter].weight = 1;
     }
 
     // function for votiing
@@ -60,7 +60,7 @@ contract Ballot {
         Voter storage sender = voters[msg.sender];
 
         require(sender.weight != 0, 'Has no right to vote');
-        require(sender.voted, 'Already voted');
+        require(!sender.voted, 'Already voted');
         sender.voted = true;
         sender.vote = proposal;
 
